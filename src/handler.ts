@@ -195,7 +195,7 @@ export async function handleRequest(request: Request): Promise<Response> {
         if (body) {
           const document = await getShareableURL(key); // # refetch
           await updateShareableURL(key, body as Object);
-          const viewCount = await incrementViewCount(key);
+          const viewCount = await getViewCount(key);
           response = { ...document as object, viewCount }; 
           status = 202;
         }
